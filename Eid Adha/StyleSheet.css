@@ -1,0 +1,535 @@
+﻿/* ===== المتغيرات العامة ===== */
+:root {
+    --primary-color: #8e44ad;
+    --secondary-color: #27ae60;
+    --accent-color: #f39c12;
+    --text-color: #333;
+    --light-color: #f5f5f5;
+    --dark-color: #2c3e50;
+    --background-gradient: linear-gradient(135deg, #f6f9fc 0%, #dfe6f0 100%);
+    --card-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+    --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.15);
+    --border-radius-sm: 8px;
+    --border-radius-md: 16px;
+    --border-radius-lg: 24px;
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+/* ===== إعادة ضبط الستايل ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Tajawal', 'Cairo', sans-serif;
+    background: var(--background-gradient);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    overflow-x: hidden;
+    position: relative;
+    padding: 2rem 1rem;
+}
+
+/* ===== الحاويات الرئيسية ===== */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.greeting-container {
+    background: var(--card-gradient);
+    backdrop-filter: blur(10px);
+    border-radius: var(--border-radius-lg);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+    .greeting-container:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg), 0 20px 40px rgba(142, 68, 173, 0.2);
+    }
+
+/* ===== الشاشة الأولية ===== */
+.initial-screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.title-container {
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+.initial-title {
+    font-family: 'Amiri', serif;
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(to right, #8e44ad, #3498db);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleGlow 3s infinite alternate;
+}
+
+.title-decoration {
+    width: 80%;
+    height: 4px;
+    background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+    margin: 0 auto;
+    border-radius: 2px;
+    position: relative;
+}
+
+    .title-decoration::before,
+    .title-decoration::after {
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: var(--accent-color);
+        top: -3px;
+    }
+
+    .title-decoration::before {
+        left: 20%;
+    }
+
+    .title-decoration::after {
+        right: 20%;
+    }
+
+/* ===== حاوية الخروف ===== */
+.sheep-container {
+    position: relative;
+    margin: 2rem auto;
+    cursor: pointer;
+    transition: transform var(--transition-normal);
+    z-index: 2;
+}
+
+    .sheep-container:hover {
+        transform: scale(1.05);
+    }
+
+.sheep-wrapper {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.sheep-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
+    transition: transform var(--transition-normal);
+}
+
+.sheep-shadow {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 20px;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
+    border-radius: 50%;
+    z-index: -1;
+    transition: all var(--transition-normal);
+}
+
+.sheep-container:hover .sheep-image {
+    transform: translateY(-10px);
+}
+
+.sheep-container:hover .sheep-shadow {
+    width: 70%;
+    opacity: 0.7;
+}
+
+.click-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.click-text-main {
+    font-size: 1.8rem;
+    color: var(--accent-color);
+    font-weight: bold;
+    animation: pulse 2s infinite;
+}
+
+.click-text-sub {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    margin-top: 0.5rem;
+    opacity: 0.8;
+}
+
+/* ===== العناصر العائمة ===== */
+.floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.floating-element {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+}
+
+#floatingElement1 {
+    top: 15%;
+    left: 10%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238e44ad'%3E%3Cpath d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/%3E%3C/svg%3E");
+    animation: float 8s infinite ease-in-out;
+}
+
+#floatingElement2 {
+    top: 20%;
+    right: 15%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2327ae60'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+    animation: float 10s infinite ease-in-out reverse;
+}
+
+#floatingElement3 {
+    bottom: 15%;
+    left: 20%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f39c12'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/%3E%3C/svg%3E");
+    animation: float 7s infinite ease-in-out;
+}
+
+#floatingElement4 {
+    bottom: 25%;
+    right: 10%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233498db'%3E%3Cpath d='M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z'/%3E%3C/svg%3E");
+    animation: float 9s infinite ease-in-out reverse;
+}
+
+/* ===== شاشة الاحتفال ===== */
+.celebration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+.hidden {
+    display: none;
+}
+
+/* ===== حاوية الألعاب النارية والزينة ===== */
+.fireworks-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.decorations-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* ===== رسالة التهنئة ===== */
+.greeting-message {
+    text-align: center;
+    padding: 2rem;
+    animation: fadeIn 1s forwards;
+    animation-delay: 1s;
+    opacity: 0;
+    position: relative;
+    z-index: 20;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    max-width: 90%;
+}
+
+.greeting-title-container {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.greeting-title {
+    font-family: 'Amiri', serif;
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to right, #8e44ad, #3498db);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.greeting-decoration {
+    width: 80%;
+    height: 4px;
+    background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+    margin: 0 auto;
+    border-radius: 2px;
+    position: relative;
+}
+
+    .greeting-decoration::before,
+    .greeting-decoration::after {
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: var(--accent-color);
+        top: -3px;
+    }
+
+    .greeting-decoration::before {
+        left: 20%;
+    }
+
+    .greeting-decoration::after {
+        right: 20%;
+    }
+
+.greeting-subtitle {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.greeting-text {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+    line-height: 1.6;
+}
+
+.greeting-dua {
+    font-family: 'Amiri', serif;
+    font-size: 1.3rem;
+    color: var(--accent-color);
+    font-style: italic;
+    line-height: 1.6;
+}
+
+/* ===== الفوتر ===== */
+footer {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    padding: 1.5rem;
+    text-align: center;
+    width: 100%;
+    margin-top: auto;
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-sm);
+}
+
+.footer-content {
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+    .footer-content p {
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+
+.footer-decoration {
+    width: 50%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--light-color), transparent);
+    margin: 0.5rem auto 0;
+    border-radius: 1px;
+}
+
+/* ===== الرسوم المتحركة ===== */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(5deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes titleGlow {
+    0% {
+        text-shadow: 0 0 5px rgba(142, 68, 173, 0.5);
+    }
+
+    100% {
+        text-shadow: 0 0 20px rgba(142, 68, 173, 0.8);
+    }
+}
+
+/* ===== التصميم المتجاوب ===== */
+@media (max-width: 992px) {
+    .initial-title, .greeting-title {
+        font-size: 3rem;
+    }
+
+    .sheep-image {
+        max-height: 350px;
+    }
+
+    .click-text-main {
+        font-size: 1.6rem;
+    }
+
+    .greeting-subtitle {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .greeting-container {
+        padding: 2rem;
+        min-height: 60vh;
+    }
+
+    .initial-title, .greeting-title {
+        font-size: 2.5rem;
+    }
+
+    .sheep-image {
+        max-height: 300px;
+    }
+
+    .click-text-main {
+        font-size: 1.4rem;
+    }
+
+    .click-text-sub {
+        font-size: 1rem;
+    }
+
+    .greeting-subtitle {
+        font-size: 1.5rem;
+    }
+
+    .greeting-text, .greeting-dua {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .greeting-container {
+        padding: 1.5rem;
+    }
+
+    .initial-title, .greeting-title {
+        font-size: 2rem;
+    }
+
+    .sheep-image {
+        max-height: 220px;
+    }
+
+    .click-text-main {
+        font-size: 1.2rem;
+    }
+
+    .greeting-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .greeting-text, .greeting-dua {
+        font-size: 1rem;
+    }
+
+    .floating-element {
+        width: 30px;
+        height: 30px;
+    }
+}

@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تهنئة عيد الأضحى المبارك</title>
+    <link rel="stylesheet" href="StyleSheet.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700;900&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="greeting-container">
+            <!-- الشاشة الأولى -->
+            <div class="initial-screen" id="initialScreen">
+                <div class="title-container">
+                    <h1 class="initial-title">عيد أضحى مبارك</h1>
+                    <div class="title-decoration"></div>
+                </div>
+
+                <div class="sheep-container">
+                    <div class="sheep-wrapper">
+                        <img src="OIP.jpg" alt="خروف العيد" id="sheep" class="sheep-image">
+                        <div class="sheep-shadow"></div>
+                    </div>
+                    <div class="click-text">
+                        <span class="click-text-main">دوس علي الخروف</span>
+                        <span class="click-text-sub">واحتفل بالعيد</span>
+                    </div>
+                </div>
+
+                <div class="floating-elements">
+                    <div class="floating-element" id="floatingElement1"></div>
+                    <div class="floating-element" id="floatingElement2"></div>
+                    <div class="floating-element" id="floatingElement3"></div>
+                    <div class="floating-element" id="floatingElement4"></div>
+                </div>
+            </div>
+
+            <!-- الشاشة الثانية (بعد النقر) -->
+            <div class="celebration hidden" id="celebration">
+                <!-- حاوية الألعاب النارية -->
+                <div class="fireworks-container" id="fireworksContainer"></div>
+
+                <!-- حاوية الزينة والكونفيتي -->
+                <div class="decorations-container" id="decorationsContainer"></div>
+
+                <!-- رسالة التهنئة -->
+                <div class="greeting-message" id="greetingMessage">
+                    <div class="greeting-title-container">
+                        <h2 class="greeting-title">عيد أضحى مبارك</h2>
+                        <div class="greeting-decoration"></div>
+                    </div>
+                    <h3 class="greeting-subtitle">محمود عبدالحميد يهنئكم بحلول عيد الأضحي</h3>
+                    <p class="greeting-text">أعاده الله علينا وعليكم بالخير واليمن والبركات</p>
+                    <p class="greeting-dua">تقبل الله منا ومنكم صالح الأعمال وكل عام وأنتم بخير</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>Mahmoud Abdalhamid &copy; 2025</p>
+            <div class="footer-decoration"></div>
+        </div>
+    </footer>
+
+    <!-- مكتبات JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.12.0/tsparticles.confetti.bundle.min.js"></script>
+
+    <!-- ملف JavaScript الخاص بنا -->
+    <script src="JavaScript.js"></script>
+</body>
+</html>
+
